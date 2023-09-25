@@ -33,7 +33,7 @@ rectangle Phandalin {
     'People / Actors with notes
     actor "Toblen Stonehill" as innkeep
     actor "Linine Graywind" as Smith
-    note bottom
+    note right
         * Hands out Weapons to townfolk
     end note
     actor "Sister Faelith" as Sister1
@@ -60,10 +60,10 @@ generalStore <-- generalStoreGuy : owner
 generalStore <-- generalStoreHelper : helps in
 mayorsHouse <--- Mayor : lives in
 minerHall <-- prospectorReception : works at
-Windmill <-- potionSeller : lives in
+Windmill <- potionSeller : lives in
 townHall <--- Mayor : works at
 
-shrine <-- orcs : destroyed
+shrine <- orcs : destroyed
 
 Mayor  --->  dragons: paranoid of
 generalStore <--- Mayor : owes money to
@@ -73,11 +73,13 @@ potionSeller ---> Mayor : dislikes
 potionSeller <-- manticorBerry : attacked
 manticorBerry <-- party : helped
 
-generalStore <-- potionSeller : provides potions to
+generalStore <--- potionSeller : provides potions to
 
 manticorBerry <-- orcs : displaced
 
 orcs <-- brownOrc : leader?
+
+
 
 'Quests
 ' card qGnomengardeQuest [
@@ -120,7 +122,7 @@ orcs <-- brownOrc : leader?
 
 
 'Notes
-note top of dragons
+note right of dragons
     -Makes no sense
     -Only Mayor believes
     -allegedly white dragon
