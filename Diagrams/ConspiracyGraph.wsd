@@ -2,64 +2,125 @@
 
 'Actors here:
 
-actor Hollis
-actor Kendal
-actor Nibarlan
-actor Thalimor
-actor Tugul
 
-actor "Toblen Stonehill" as innkeep
-actor "Linine Graywind" as Smith
-actor "Sister Faelith" as SisterABC
-actor SisterBCD
-actor "Elmar Barthen" as generalStoreGuy
-actor "Ander" as generalStoreHelper
-actor "Harbin Wester" as Mayor
+'actor Hollis
+'actor Kendal
+'actor Nibarlan
+'actor Thalimor
+'actor Tugul
+
+
 actor "Berry the Manticore" as manticorBerry
-actor "Adabra Gwynn" as potionSeller
-actor "Halia Thornton" as prospectorReception
-
-'Locations here
-
-[Stone Hill Inn] as stoneHillInn
-[Townmasters Hall] as townHall
-[Job board] as jobBoard
-[Smithy]
-[Destroyed Shrine to someone] as shrine 
-[General Store] as generalStore
-[Mayors House] as mayorsHouse
-[Miner's Exchange] as minerHall
+actor "Brown orc" as brownOrc
+(Orcs) as orcs
+(Dragons) as dragons
+cloud "Party" as party
+'Location Phandalin
 
 'General Concepts?
 
-(Orcs)
-(Player Party) as party
-(Safe the Midwife Quest) as quest1
-(Dragon?) as dragon
+rectangle Phandalin {
+    ' locations
+    [Stone Hill Inn] as stoneHillInn
+    [Townmasters Hall] as townHall
+    [Smithy]
+    [Destroyed Shrine to Tumorah] as shrine
+    [General Store] as generalStore
+    [Mayors House] as mayorsHouse
+    [Miner's Exchange] as minerHall
+    [Windmill (Umbrage Hill)] as Windmill
+
+    'People / Actors with notes
+    actor "Toblen Stonehill" as innkeep
+    actor "Linine Graywind" as Smith
+    note bottom
+        * Hands out Weapons to townfolk
+    end note
+    actor "Sister Faelith" as Sister1
+    actor "Unknown Sister" as Sister2
+    actor "Elmar Barthen" as generalStoreGuy
+    actor "Ander" as generalStoreHelper
+
+    actor "Harbin Wester" as Mayor
+    note bottom of Mayor
+        * Mayor of Phandalin
+        * Wealthy
+        * Paid for Quest
+    end note
+
+    actor "Adabra Gwynn" as potionSeller
+    actor "Halia Thornton" as prospectorReception
+}
+
+stoneHillInn <-- innkeep : owner
+Smithy <-- Smith : owner
+shrine <-- Sister1 : supporter
+shrine <-- Sister2 : supporter
+generalStore <-- generalStoreGuy : owner
+generalStore <-- generalStoreHelper : helps in
+mayorsHouse <--- Mayor : lives in
+minerHall <-- prospectorReception : works at
+Windmill <-- potionSeller : lives in
+townHall <--- Mayor : works at
+
+shrine <-- orcs : destroyed
+
+Mayor  --->  dragons: paranoid of
+generalStore <--- Mayor : owes money to
+potionSeller <--- Mayor : interested in?
+potionSeller ---> Mayor : dislikes
+
+potionSeller <-- manticorBerry : attacked
+manticorBerry <-- party : helped
+
+generalStore <-- potionSeller : provides potions to
+
+manticorBerry <-- orcs : displaced
+
+orcs <-- brownOrc : leader?
+
+'Quests
+' card qGnomengardeQuest [
+'     South west of Phandalin
+'     Get weapons to kill Dragons
+' ]
+
+' card qDwarvenExcavation
+' [
+'     South west of Phandalin
+'     Warn Dwarves of White Dragon
+' ]
+
+'Personal relations
+
+
+
+
+
+'Location relations
+
+'Personal relations
 
 'Relations here
-    
-stoneHillInn -- innkeep : bar keeper
-Smithy -- Smith : smith
-shrine -- SisterABC
-shrine -- SisterBCD
-generalStore -- generalStoreGuy : owns and operates
-townHall -- Mayor
-mayorsHouse -- Mayor
-townHall - jobBoard
-jobBoard -- Mayor
-manticorBerry <--- Orcs : displaced from the mountains
-Orcs ---> shrine : destroyed
-Mayor --> quest1 : posted
-quest1 - potionSeller
-manticorBerry ---> potionSeller : attacked
-Mayor ---> potionSeller : Wants something from
-dragon <- Mayor : is afraid of?
-minerHall -- Receptionist
+' stoneHillInn -- innkeep : bar keeper
+' Smithy -- Smith : smith
+' shrine -- SisterABC
+' shrine -- SisterBCD
+' generalStore -- generalStoreGuy : owns and operates
+' townHall -- Mayor
+' mayorsHouse -- Mayor
+' manticorBerry <--- Orcs : displaced from the mountains
+' Orcs ---> shrine : destroyed
+' Mayor --> quest1 : posted
+' quest1 - potionSeller
+' manticorBerry ---> potionSeller : attacked
+' Mayor ---> potionSeller : Wants something from
+' dragon <- Mayor : is afraid of?
+' minerHall -- prospectorReception
 
 
 'Notes
-note top of dragon
+note top of dragons
     -Makes no sense
     -Only Mayor believes
     -allegedly white dragon
@@ -67,7 +128,7 @@ note top of dragon
     -maybe a red herring
 end note
 
-note right of Orcs
+note right of orcs
     Why are they agitated?
 end note
 
