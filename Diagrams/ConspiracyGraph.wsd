@@ -63,4 +63,8 @@ note top of dragon
     -maybe a red herring
 end note
 
+note right of Orcs
+    Why are they agitated?
+end note
+
 @enduml
