@@ -1,0 +1,66 @@
+@startuml Conspiracy Graph
+
+'Actors here:
+
+actor Hollis
+actor Kendal
+actor Nibarlan
+actor Thalimor
+actor Tugul
+
+actor Barkeep
+actor Smith
+actor SisterABC
+actor SisterBCD
+actor "Old Fart in\nGeneral Store" as generalStoreGuy
+actor Mayor
+actor "Berry the Manticore" as manticorBerry
+actor "Hippy Lady in the woods" as potionSeller
+
+'Locations here
+
+[Stone Hill Inn] as stoneHillInn
+[Townmasters Hall] as townHall
+[Job board] as jobBoard
+[Smithy]
+[Destroyed Shrine to someone] as shrine 
+[General Store] as generalStore
+[Mayors House] as mayorsHouse
+
+'General Concepts?
+
+(Orcs)
+(Player Party) as party
+(Safe the Midwife Quest) as quest1
+(Dragon?) as dragon
+
+'Relations here
+    
+stoneHillInn -- Barkeep : bar keeper
+Smithy -- Smith : smith
+shrine -- SisterABC
+shrine -- SisterBCD
+generalStore -- generalStoreGuy : owns and operates
+townHall -- Mayor
+mayorsHouse -- Mayor
+townHall - jobBoard
+jobBoard -- Mayor
+manticorBerry <--- Orcs : displaced from the mountains
+Orcs ---> shrine : destroyed
+Mayor --> quest1 : posted
+quest1 - potionSeller
+manticorBerry ---> potionSeller : attacked
+Mayor ---> potionSeller : Wants something from
+dragon <- Mayor : is afraid of?
+
+
+'Notes
+note top of dragon
+    -Makes no sense
+    -Only Mayor believes
+    -allegedly white dragon
+    -possibly just clouds
+    -maybe a red herring
+end note
+
+@enduml
