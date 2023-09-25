@@ -8,14 +8,16 @@ actor Nibarlan
 actor Thalimor
 actor Tugul
 
-actor Barkeep
-actor Smith
-actor SisterABC
+actor "Toblen Stonehill" as innkeep
+actor "Linine Graywind" as Smith
+actor "Sister Faelith" as SisterABC
 actor SisterBCD
-actor "Old Fart in\nGeneral Store" as generalStoreGuy
-actor Mayor
+actor "Elmar Barthen" as generalStoreGuy
+actor "Ander" as generalStoreHelper
+actor "Harbin Wester" as Mayor
 actor "Berry the Manticore" as manticorBerry
-actor "Hippy Lady in the woods" as potionSeller
+actor "Adabra Gwynn" as potionSeller
+actor "Halia Thornton" as prospectorReception
 
 'Locations here
 
@@ -36,7 +38,7 @@ actor "Hippy Lady in the woods" as potionSeller
 
 'Relations here
     
-stoneHillInn -- Barkeep : bar keeper
+stoneHillInn -- innkeep : bar keeper
 Smithy -- Smith : smith
 shrine -- SisterABC
 shrine -- SisterBCD
