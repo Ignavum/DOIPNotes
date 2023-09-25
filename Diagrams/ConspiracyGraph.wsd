@@ -28,6 +28,7 @@ actor "Halia Thornton" as prospectorReception
 [Destroyed Shrine to someone] as shrine 
 [General Store] as generalStore
 [Mayors House] as mayorsHouse
+[Miner's Exchange] as minerHall
 
 'General Concepts?
 
@@ -54,6 +55,7 @@ quest1 - potionSeller
 manticorBerry ---> potionSeller : attacked
 Mayor ---> potionSeller : Wants something from
 dragon <- Mayor : is afraid of?
+minerHall -- Receptionist
 
 
 'Notes
