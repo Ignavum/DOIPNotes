@@ -50,6 +50,33 @@ rectangle Phandalin {
 
     actor "Adabra Gwynn" as potionSeller
     actor "Halia Thornton" as prospectorReception
+    note bottom of prospectorReception
+        * Has some "Connections?"
+        * Asked us to look into new Mayor
+        * Told us about old mayor's suspicious death
+        * From her notes: "Axe" supposedly important?!
+    end note
+
+    actor "Old Mayor" as oldMayor
+    note bottom of oldMayor
+        * Was young
+        * Allegedly died of heart attack
+        * Body was taken to (Waterdeep?)
+    end note
+}
+
+rectangle "Temple of Abathor"{
+    (Abathor)
+    note right of Abathor
+        * Dwarven Deity
+        * God of Wealth?
+        * Mad face on statue.
+    end note
+    actor Dazlyn
+    actor Norbis
+
+    [Well]
+    (Flare of Unknown origin) as flare
 }
 
 stoneHillInn <-- innkeep : owner
@@ -70,6 +97,8 @@ generalStore <--- Mayor : owes money to
 potionSeller <--- Mayor : interested in?
 potionSeller ---> Mayor : dislikes
 
+oldMayor <-- Mayor : Replaced VERY quickly after death
+
 potionSeller <-- manticorBerry : attacked
 manticorBerry <-- party : helped
 
@@ -79,7 +108,7 @@ manticorBerry <-- orcs : displaced
 
 orcs <-- brownOrc : leader?
 
-
+flare -- Well
 
 'Quests
 ' card qGnomengardeQuest [
