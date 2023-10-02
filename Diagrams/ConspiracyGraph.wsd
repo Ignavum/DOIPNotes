@@ -57,7 +57,7 @@ rectangle Phandalin {
         * From her notes: "Axe" supposedly important?!
     end note
 
-    actor "Old Mayor" as oldMayor
+    actor "Old Mayor" as oldMayor #line.dashed;line:red
     note bottom of oldMayor
         * Was young
         * Allegedly died of heart attack
