@@ -11,7 +11,7 @@
 
 
 actor "Berry the Manticore" as manticorBerry
-actor "Brown orc" as brownOrc
+actor "Brown orc (Sacred Orc)" as brownOrc
 (Orcs) as orcs
 (Dragons) as dragons
 cloud "Party" as party
@@ -63,7 +63,11 @@ rectangle Phandalin {
         * Allegedly died of heart attack
         * Body was taken to (Waterdeep?)
     end note
+
+    actor "Shifty Gnomes" as shiftyGnomes
 }
+
+stoneHillInn <-- shiftyGnomes : Gambled and stole from patreons
 
 rectangle "Temple of Abathor"{
     (Abathor)
@@ -78,6 +82,7 @@ rectangle "Temple of Abathor"{
     [Well]
     (Flare of Unknown origin) as flare
 }
+
 
 stoneHillInn <-- innkeep : owner
 Smithy <-- Smith : owner
@@ -110,45 +115,26 @@ orcs <-- brownOrc : leader?
 
 flare -- Well
 
-'Quests
-' card qGnomengardeQuest [
-'     South west of Phandalin
-'     Get weapons to kill Dragons
-' ]
+rectangle "Gnomengard" {
+    actor "Fiblestib (lead engineer)"
+    actor "Dabble Dob (lead engineer)"
+    actor King1 as king1
+    actor King2 as king2
 
-' card qDwarvenExcavation
-' [
-'     South west of Phandalin
-'     Warn Dwarves of White Dragon
-' ]
+    (Monster Rug) as rugMonster
+    (Mushrooms)
+    (Hexapod Mechs)
+    (Wild Magic Annomaly)
+    (Screams)
+}
 
-'Personal relations
+rugMonster -> Mushrooms : made of
+king1 -> rugMonster : afraid of
 
-
-
-
-
-'Location relations
-
-'Personal relations
-
-'Relations here
-' stoneHillInn -- innkeep : bar keeper
-' Smithy -- Smith : smith
-' shrine -- SisterABC
-' shrine -- SisterBCD
-' generalStore -- generalStoreGuy : owns and operates
-' townHall -- Mayor
-' mayorsHouse -- Mayor
-' manticorBerry <--- Orcs : displaced from the mountains
-' Orcs ---> shrine : destroyed
-' Mayor --> quest1 : posted
-' quest1 - potionSeller
-' manticorBerry ---> potionSeller : attacked
-' Mayor ---> potionSeller : Wants something from
-' dragon <- Mayor : is afraid of?
-' minerHall -- prospectorReception
-
+note bottom of Gnomengard
+    Gnomes behave very strangely;
+    Perhaps because of mushrooms;
+end note
 
 'Notes
 note right of dragons
@@ -160,8 +146,14 @@ note right of dragons
 end note
 
 note right of orcs
-    Why are they agitated?
+    Displaced by Manticors and other monsters
     Forming warparties
+end note
+
+note bottom of king2
+    Maybe dead? 
+    We didn't hear him
+    King1 did not wanna talk about him
 end note
 
 @enduml
