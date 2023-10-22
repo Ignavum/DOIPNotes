@@ -145,8 +145,8 @@ rectangle "Gnomengard" {
 }
 
 '######### Woodcutter Camp #########
-rectangle "Woodcutter Camp" as woodcutterCamp {
-    actor "Leader" as woodcutterLeader
+rectangle "Logging Camp" as woodcutterCamp {
+    actor "Tibor Wester" as woodcutterLeader
 }
 
 woodcutterLeader --- Mayor : half-brothers
@@ -154,14 +154,13 @@ Mayor ---> woodcutterCamp : wants sends provisions
 
 
 '######### ??? Ranch #########
-rectangle "??? Ranch" as ranch {
-    actor "??? Sheriff" as sheriff
-
+rectangle "Butterskull Ranch" as ranch {
+    actor "Alfonse 'Big Al' Kalazorn" as sheriff
 }
 
 orcs ---> ranch : attacked
 Mayor ---> ranch : wants investigated
-
+'Mayor ---> sheriff : wants proof of demise?
 
 '######### Lighthouse #########
 rectangle "Lighthouse" as lighthouse {
@@ -183,7 +182,7 @@ note top of tradeRoute
     * Provisions stopped coming recently
 end note
 
-Phandalin --- tradeRoute
+tradeRoute --- Phandalin
 Mayor ---> tradeRoute : doesnt know of problems
 lighthouse ---> tradeRoute : causes shipwrecks?
 
