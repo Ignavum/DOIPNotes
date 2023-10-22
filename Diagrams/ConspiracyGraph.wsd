@@ -1,32 +1,34 @@
 @startuml Conspiracy Graph
 left to right direction
-'Actors here:
+skinparam linetype polyline
+skinparam nodesep 60
 
-
-
-
-cloud Party {
-    actor Hollis
-    note right of Hollis
-    * Has seen dragon by lighthouse during night
-    end note
-
-    actor Kendal
-    actor Nibarlan
-    actor Thalimor
-    actor Tugul
-}
-
-
+'Global Actors here:
 actor "Berry the Manticore" as manticorBerry
 actor "Brown orc (Sacred Orc)" as brownOrc
 (Orcs) as orcs
 (Dragons) as dragons
 (Some secret organization) as secretOrg
-'Location Phandalin
 
-'General Concepts?
+'Global Notes
+note top of dragons
+    -Makes no sense
+    -Only Mayor believes
+    -allegedly white dragon
+    -possibly just clouds
+    -maybe a red herring
+end note
 
+note top of orcs
+    Displaced by Manticors and other monsters
+    Forming warparties
+end note
+
+' Global only relations
+brownOrc --> orcs : leader?
+orcs --> manticorBerry : displaced
+
+'######### Location Phandalin #########
 rectangle Phandalin {
     ' locations
     [Stone Hill Inn] as stoneHillInn
@@ -41,7 +43,7 @@ rectangle Phandalin {
     'People / Actors with notes
     actor "Toblen Stonehill" as innkeep
     actor "Linine Graywind" as Smith
-    note right
+    note top of Smith
         * Hands out Weapons to townfolk
     end note
     actor "Sister Faelith" as Sister1
@@ -50,7 +52,7 @@ rectangle Phandalin {
     actor "Ander" as generalStoreHelper
 
     actor "Harbin Wester" as Mayor
-    note bottom of Mayor
+    note top of Mayor
         * Mayor of Phandalin
         * Wealthy
         * Paid for Quest
@@ -58,7 +60,7 @@ rectangle Phandalin {
 
     actor "Adabra Gwynn" as potionSeller
     actor "Halia Thornton" as prospectorReception
-    note bottom of prospectorReception
+    note top of prospectorReception
         * Has some "Connections?"
         * Asked us to look into new Mayor
         * Told us about old mayor's suspicious death
@@ -66,21 +68,47 @@ rectangle Phandalin {
     end note
 
     actor "Old Mayor" as oldMayor #line.dashed;line:red
-    note bottom of oldMayor
+    note top of oldMayor
         * Was young
         * Allegedly died of heart attack
         * Body was taken to (Waterdeep?)
     end note
 
     actor "Shifty Gnomes" as shiftyGnomes
+
+    'local relations
+
+    shiftyGnomes --> stoneHillInn : Gambled and stole from patreons
+    prospectorReception --> secretOrg : part of
+
+    innkeep --> stoneHillInn : owner
+    Smith --> Smithy : owner
+    Sister1 --> shrine : supporter
+    Sister2 --> shrine : supporter
+    generalStoreGuy --> generalStore: owner
+    generalStoreHelper --> generalStore : helps in
+    Mayor --> mayorsHouse : lives in
+    prospectorReception --> minerHall : works at
+    potionSeller --> Windmill : lives in
+    Mayor --> townHall : works at
+
+    Mayor --> generalStore : owes money to
+    Mayor --> potionSeller : interested in?
+    potionSeller --> Mayor : dislikes
+
+    Mayor --> oldMayor : Replaced VERY quickly after death
+
+    potionSeller --> generalStore : provides potions to
 }
 
-stoneHillInn <-- shiftyGnomes : Gambled and stole from patreons
-prospectorReception -u-> secretOrg : part of
+manticorBerry ---> potionSeller : attacked
+orcs ---> shrine : destroyed
+Mayor  --->  dragons: paranoid of
 
+'######### Temple of Abathor #########
 rectangle "Temple of Abathor"{
     (Abathor)
-    note right of Abathor
+    note top of Abathor
         * Dwarven Deity
         * God of Wealth?
         * Mad face on statue.
@@ -90,39 +118,11 @@ rectangle "Temple of Abathor"{
 
     [Well]
     (Flare of Unknown origin) as flare
+
+    flare -- Well
 }
 
-
-stoneHillInn <-- innkeep : owner
-Smithy <-- Smith : owner
-shrine <-- Sister1 : supporter
-shrine <-- Sister2 : supporter
-generalStore <-- generalStoreGuy : owner
-generalStore <-- generalStoreHelper : helps in
-mayorsHouse <--- Mayor : lives in
-minerHall <-- prospectorReception : works at
-Windmill <- potionSeller : lives in
-townHall <--- Mayor : works at
-
-shrine <- orcs : destroyed
-
-Mayor  --->  dragons: paranoid of
-generalStore <--- Mayor : owes money to
-potionSeller <--- Mayor : interested in?
-potionSeller ---> Mayor : dislikes
-
-oldMayor <-- Mayor : Replaced VERY quickly after death
-
-potionSeller <-- manticorBerry : attacked
-
-generalStore <--- potionSeller : provides potions to
-
-manticorBerry <-- orcs : displaced
-
-orcs <-- brownOrc : leader?
-
-flare -- Well
-
+'######### Gnomengard #########
 rectangle "Gnomengard" {
     actor "Fiblestib (lead engineer)"
     actor "Dabble Dob (lead engineer)"
@@ -134,71 +134,66 @@ rectangle "Gnomengard" {
     (Wild Magic Annomaly)
     (Mimic Attack) as mimicattack
     (Drugs!)
-    
-    note left of mimicattack
-    Probably has killed one gnome (whups)
+
+    note top of mimicattack
+        Probably has killed one gnome (whups)
     end note
+
+    rugMonster --> Mushrooms : made of
+    rugMonster --> king1 : attacked
+    mimicattack --> rugMonster : is
 }
 
-rugMonster -> Mushrooms : made of
-king1 -> rugMonster : afraid of
-mimicattack --> rugMonster : is
-
+'######### Woodcutter Camp #########
 rectangle "Woodcutter Camp" as woodcutterCamp {
     actor "Leader" as woodcutterLeader
 }
 
-woodcutterLeader -u- Mayor : half-brothers
-Mayor --> woodcutterCamp : wants sends provisions
+woodcutterLeader --- Mayor : half-brothers
+Mayor ---> woodcutterCamp : wants sends provisions
 
+
+'######### ??? Ranch #########
 rectangle "??? Ranch" as ranch {
     actor "??? Sheriff" as sheriff
 
 }
 
-orcs --> ranch : attacked
-Mayor --> ranch : wants investigated
+orcs ---> ranch : attacked
+Mayor ---> ranch : wants investigated
 
+
+'######### Lighthouse #########
 rectangle "Lighthouse" as lighthouse {
 
 }
-note bottom of lighthouse {
+note top of lighthouse
     * not in use
     * started to glow green
-}
+end note
 
+dragons ---> lighthouse : seen by Hollis and Ahnold at
+
+'######### Trade Route #########
 (Trade Route) as tradeRoute
 
-note bottom of tradeRoute
+note top of tradeRoute
     * used to be over road
     * Over sea since 6 months
     * Provisions stopped coming recently
 end note
 
-rectangle Neverwinter {
+Phandalin --- tradeRoute
+Mayor ---> tradeRoute : doesnt know of problems
+lighthouse ---> tradeRoute : causes shipwrecks?
 
+'######### TNeverwinter #########
+rectangle Neverwinter {
 }
 
-Phandalin -l- tradeRoute
-tradeRoute -d- Neverwinter
-
-Mayor --> tradeRoute : doesnt know of problems
-lighthouse --> tradeRoute : causes shipwrecks?
-dragons --> lighthouse : seen by Hollis and Ahnold at
+tradeRoute --- Neverwinter
 
 
-'Notes
-note right of dragons
-    -Makes no sense
-    -Only Mayor believes
-    -allegedly white dragon
-    -possibly just clouds
-    -maybe a red herring
-end note
 
-note right of orcs
-    Displaced by Manticors and other monsters
-    Forming warparties
-end note
 
 @enduml
