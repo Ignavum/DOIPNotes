@@ -1,4 +1,4 @@
 # DOIPNotes
 Notes for the DOIP campain
 
-![](out/Diagrams/ConspiracyGraph/Conspiracy Graph.png)
+![Conspiracy Graph](/out/Diagrams/ConspiracyGraph/Conspiracy%20Graph.png)
