@@ -6,6 +6,9 @@ skinparam nodesep 60
 'Global Actors here:
 actor "Berry the Manticore" as manticorBerry
 actor "Brown orc (Sacred Orc)" as brownOrc
+note top of brownOrc
+    * knows magic?
+end note
 (Orcs) as orcs
 (Dragons) as dragons
 (Some secret organization) as secretOrg
