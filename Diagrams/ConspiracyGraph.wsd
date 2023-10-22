@@ -1,20 +1,28 @@
 @startuml Conspiracy Graph
-
+left to right direction
 'Actors here:
 
 
-'actor Hollis
-'actor Kendal
-'actor Nibarlan
-'actor Thalimor
-'actor Tugul
+
+
+cloud Party {
+    actor Hollis
+    note right of Hollis
+    * Has seen dragon by lighthouse during night
+    end note
+
+    actor Kendal
+    actor Nibarlan
+    actor Thalimor
+    actor Tugul
+}
 
 
 actor "Berry the Manticore" as manticorBerry
 actor "Brown orc (Sacred Orc)" as brownOrc
 (Orcs) as orcs
 (Dragons) as dragons
-cloud "Party" as party
+(Some secret organization) as secretOrg
 'Location Phandalin
 
 'General Concepts?
@@ -68,6 +76,7 @@ rectangle Phandalin {
 }
 
 stoneHillInn <-- shiftyGnomes : Gambled and stole from patreons
+prospectorReception -u-> secretOrg : part of
 
 rectangle "Temple of Abathor"{
     (Abathor)
@@ -105,7 +114,6 @@ potionSeller ---> Mayor : dislikes
 oldMayor <-- Mayor : Replaced VERY quickly after death
 
 potionSeller <-- manticorBerry : attacked
-manticorBerry <-- party : helped
 
 generalStore <--- potionSeller : provides potions to
 
@@ -123,18 +131,61 @@ rectangle "Gnomengard" {
 
     (Monster Rug) as rugMonster
     (Mushrooms)
-    (Hexapod Mechs)
     (Wild Magic Annomaly)
-    (Screams)
+    (Mimic Attack) as mimicattack
+    (Drugs!)
+    
+    note left of mimicattack
+    Probably has killed one gnome (whups)
+    end note
 }
 
 rugMonster -> Mushrooms : made of
 king1 -> rugMonster : afraid of
+mimicattack --> rugMonster : is
 
-note bottom of Gnomengard
-    Gnomes behave very strangely;
-    Perhaps because of mushrooms;
+rectangle "Woodcutter Camp" as woodcutterCamp {
+    actor "Leader" as woodcutterLeader
+}
+
+woodcutterLeader -u- Mayor : half-brothers
+Mayor --> woodcutterCamp : wants sends provisions
+
+rectangle "??? Ranch" as ranch {
+    actor "??? Sheriff" as sheriff
+
+}
+
+orcs --> ranch : attacked
+Mayor --> ranch : wants investigated
+
+rectangle "Lighthouse" as lighthouse {
+
+}
+note bottom of lighthouse {
+    * not in use
+    * started to glow green
+}
+
+(Trade Route) as tradeRoute
+
+note bottom of tradeRoute
+    * used to be over road
+    * Over sea since 6 months
+    * Provisions stopped coming recently
 end note
+
+rectangle Neverwinter {
+
+}
+
+Phandalin -l- tradeRoute
+tradeRoute -d- Neverwinter
+
+Mayor --> tradeRoute : doesnt know of problems
+lighthouse --> tradeRoute : causes shipwrecks?
+dragons --> lighthouse : seen by Hollis and Ahnold at
+
 
 'Notes
 note right of dragons
@@ -148,12 +199,6 @@ end note
 note right of orcs
     Displaced by Manticors and other monsters
     Forming warparties
-end note
-
-note bottom of king2
-    Maybe dead? 
-    We didn't hear him
-    King1 did not wanna talk about him
 end note
 
 @enduml
