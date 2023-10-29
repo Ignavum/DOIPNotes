@@ -9,23 +9,25 @@ actor "Brown orc (Sacred Orc)" as brownOrc
 note top of brownOrc
     * knows magic?
 end note
+
 (Orcs) as orcs
-(Dragons) as dragons
-(Some secret organization) as secretOrg
-
-'Global Notes
-note top of dragons
-    -Makes no sense
-    -Only Mayor believes
-    -allegedly white dragon
-    -possibly just clouds
-    -maybe a red herring
-end note
-
 note top of orcs
     Displaced by Manticors and other monsters
     Forming warparties
 end note
+
+(Dragons) as dragons
+note top of dragons
+    * Makes no sense
+    * Only Mayor believes
+    * allegedly white dragon
+    * possibly just clouds
+    * maybe a red herring
+    * Seen by Hollis and Ahnold
+    * Heard by entire Party
+end note
+
+(Some secret organization) as secretOrg
 
 ' Global only relations
 brownOrc --> orcs : leader?
@@ -167,14 +169,27 @@ Mayor ---> ranch : wants investigated
 
 '######### Lighthouse #########
 rectangle "Lighthouse" as lighthouse {
+    actor "Barnacle the giant crab" as barnacle
+    actor "Miraal" as miraal
+    actor "Brown orc 2" as brownOrcLighthouse
+    note top of brownOrcLighthouse
+        * used own heart to make lighthouse glow
+        * blinded vessels?
+        * Follower of Talos, God of Storms
+        * Halforc (less Human)?
+        * Lightning magic
+    end note
 
+    barnacle --> miraal : Familiar?
+    brownOrcLighthouse --> miraal : killed
 }
-note top of lighthouse
+
+note left of lighthouse
     * not in use
     * started to glow green
 end note
 
-dragons ---> lighthouse : seen by Hollis and Ahnold at
+brownOrc --- brownOrcLighthouse : the same?
 
 '######### Trade Route #########
 (Trade Route) as tradeRoute
