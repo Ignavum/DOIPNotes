@@ -5,7 +5,7 @@ skinparam nodesep 60
 
 'Global Actors here:
 actor "Berry the Manticore" as manticorBerry
-actor "Brown orc (Sacred Orc)" as brownOrc
+actor "Brown orc(s) (Sacred Orc)" as brownOrc
 note top of brownOrc
     * knows magic?
 end note
@@ -39,7 +39,7 @@ rectangle Phandalin {
     [Stone Hill Inn] as stoneHillInn
     [Townmasters Hall] as townHall
     [Smithy]
-    [Destroyed Shrine to Tumorah] as shrine
+    [Destroyed Shrine to Tymora] as shrine
     [General Store] as generalStore
     [Mayors House] as mayorsHouse
     [Miner's Exchange] as minerHall
@@ -52,9 +52,10 @@ rectangle Phandalin {
         * Hands out Weapons to townfolk
     end note
     actor "Sister Faelith" as Sister1
-    actor "Unknown Sister" as Sister2
+    actor "Sister Garell" as Sister2
     actor "Elmar Barthen" as generalStoreGuy
     actor "Ander" as generalStoreHelper
+    actor "Thistle" as generalStoreHelper2
 
     actor "Harbin Wester" as Mayor
     note top of Mayor
@@ -92,6 +93,7 @@ rectangle Phandalin {
     Sister2 --> shrine : supporter
     generalStoreGuy --> generalStore: owner
     generalStoreHelper --> generalStore : helps in
+    generalStoreHelper2 --> generalStore : helps in
     Mayor --> mayorsHouse : lives in
     prospectorReception --> minerHall : works at
     potionSeller --> Windmill : lives in
@@ -210,6 +212,36 @@ rectangle Neverwinter {
 
 tradeRoute --- Neverwinter
 
+
+rectangle "Falcons Hunting Lodge"{    
+    actor "Falcon" as falcon
+    note top of falcon
+        * former Captain of the guard of waterdeep
+        * Killed Dragons previously
+        * Told party about white dragons
+    end note
+    actor "Pell" as yellowBoy
+    note top of yellowBoy
+        * Yellow eyes
+        * Mute
+    end note
+    actor "Boar with yellow Eyes" as yellowBoar
+    actor "Corvin the chef" as corvin
+}
+
+falcon --- sheriff
+falcon --> brownOrc : knows of 
+
+rectangle "Other relations" {
+    actor "Tymora goddess of luck" as tymora
+    actor "Talos god of storms" as talos
+    actor "Sylvanus?" as sylvanus
+
+    (conflict)
+    tymora -- conflict
+    conflict -- talos
+    conflict <- sylvanus :mediation
+}
 
 
 
