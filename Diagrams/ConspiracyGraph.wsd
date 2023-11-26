@@ -25,6 +25,7 @@ note top of dragons
     * maybe a red herring
     * Seen by Hollis and Ahnold
     * Heard by entire Party
+    * Stole a cow from Butterskull (seen by Hollis)
 end note
 
 (Some secret organization) as secretOrg
@@ -160,9 +161,10 @@ woodcutterLeader --- Mayor : half-brothers
 Mayor ---> woodcutterCamp : wants sends provisions
 
 
-'######### ??? Ranch #########
+'######### Butterskull Ranch #########
 rectangle "Butterskull Ranch" as ranch {
     actor "Alfonse 'Big Al' Kalazorn" as sheriff
+
 }
 
 orcs ---> ranch : attacked
@@ -212,8 +214,9 @@ rectangle Neverwinter {
 
 tradeRoute --- Neverwinter
 
+'######### Falcons Lodge #########
+rectangle "Falcons Hunting Lodge"{
 
-rectangle "Falcons Hunting Lodge"{    
     actor "Falcon" as falcon
     note top of falcon
         * former Captain of the guard of waterdeep
@@ -230,7 +233,7 @@ rectangle "Falcons Hunting Lodge"{
 }
 
 falcon --- sheriff
-falcon --> brownOrc : knows of 
+falcon --> brownOrc : knows of
 
 rectangle "Other relations" {
     actor "Tymora goddess of luck" as tymora
@@ -243,6 +246,16 @@ rectangle "Other relations" {
     conflict <- sylvanus :mediation
 }
 
+'######### Connyberry #########
+rectangle "Connyberry" as connyberry{
+    note bottom of connyberry
+        * Destoyed by Orcs?
+        * Seems burned down, but is not burned (waterlogged)
+        * Dead Orcs, all facing north
+        * Missing bell
+    end note
+}
+orcs ---> connyberry : attacked
 
 
 @enduml
