@@ -72,6 +72,7 @@ rectangle Phandalin {
         * Asked us to look into new Mayor
         * Told us about old mayor's suspicious death
         * From her notes: "Axe" supposedly important?!
+        * Untrustworthy according to Kendal (only Hollis + Kendal know)
     end note
 
     actor "Old Mayor" as oldMayor #line.dashed;line:red
@@ -155,10 +156,27 @@ rectangle "Gnomengard" {
 '######### Woodcutter Camp #########
 rectangle "Logging Camp" as woodcutterCamp {
     actor "Tibor Wester" as woodcutterLeader
+    note top of woodcutterLeader
+        * Is asshole
+        * robbed / insulted by party
+        * hopefully dead
+    end note
+
+    (Totem to Talos) as totem
+
+    note top of totem
+        * attracted Antkegs
+        * destroyed by Hollis        
+    end note
 }
 
+note top of woodcutterCamp
+    * Attacked by Antkegs
+    * Everybody except Wester died
+end note
+
 woodcutterLeader --- Mayor : half-brothers
-Mayor ---> woodcutterCamp : wants sends provisions
+Mayor ---> woodcutterCamp : sends provisions
 
 
 '######### Butterskull Ranch #########
